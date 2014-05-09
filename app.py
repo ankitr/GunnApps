@@ -7,7 +7,6 @@ from flask import Flask
 
 from apps import main
 from apps import api
-from apps import discourse
 
 app = Flask(__name__)
 
