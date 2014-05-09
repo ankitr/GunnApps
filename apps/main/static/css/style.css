@@ -1,0 +1,98 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
+body {
+    background-color: #e74c3c;
+    color: #fff;
+    margin: 0;
+    font-family: Lato, sans-serif;
+    /*font-weight: lighter;*/
+    opacity: 0.8;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 72px;
+    text-align: center;
+    margin-top: 10%;
+}
+
+h3 {
+    font-weight: 300;
+    font-size: 36px;
+    text-align: center;
+}
+
+@media (min-width: 670px) {
+    form {
+        width: 600px;
+        margin: 2.5% auto;
+    }
+}
+
+@media (max-width: 669px) {
+    form {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+input:not([type=submit]):not([type=file]) {
+    color: #fff;
+    opacity: 1;
+    font-family: Lato, sans-serif;
+    height: 50px;
+    width: 100%;
+    background: none;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #fff;
+    padding: 0 20px;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-left: -20px;
+    outline: none;
+}
+
+input[type="submit"] {
+    padding: 15px;
+    background: none;
+    color: #fff;
+    font-family: Lato;
+    font-size: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #fff;
+    width: auto;
+    font-weight: 300;
+}
+
+::-webkit-input-placeholder {
+   color: #fff;
+   opacity: 0.5
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff;  
+   opacity: 0.5
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;  
+   opacity: 0.5
+}
+
+:-ms-input-placeholder {  
+   color: #fff;  
+   opacity: 0.5
+}
+
+.centered {
+    width: 100%;
+    text-align: center;
+}
+
+a {
+    color: #fff;
+    font-weight: 300;
+}
