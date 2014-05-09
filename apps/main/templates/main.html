@@ -10,6 +10,9 @@
             <h1>Gunn Apps</h1>
 
             <form class="users">
+                {% if invalid %}
+                <h3>Incorrect username or password.</h3>
+                {% endif %}
                 <input type="email" placeholder="Email Address">
                 <input type="password" placeholder="Password">
                 <div class="centered"><input type="submit" value="Log In"></div>

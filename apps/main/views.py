@@ -8,7 +8,12 @@ from flask import request
 
 blueprint = Blueprint('dashboard', __name__)
 
-@blueprint.route('/')
-def hello():
+@blueprint.route('/', methods=['GET'])
+def land():
     """Returns the landing page."""
     return render_template('main.html')
+
+@blueprint.route('/', methods=['POST'])
+def login():
+    email = request.form['email']
+    password = request.form['password']
