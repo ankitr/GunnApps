@@ -17,3 +17,9 @@ def land():
 def login():
     email = request.form['email']
     password = request.form['password']
+
+@blueprint.route('/register', methods=['GET'])
+@blueprint.route('/', methods=['GET'])
+def contemplate():
+    """Returns the registration page."""
+    return render_template('register.html')

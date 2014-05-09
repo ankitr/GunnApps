@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Register — Gunn Apps</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <section class="content">
+            <h1>Register</h1>
+
+            <form class="register">
+                {% if invalid %}
+                <h3>Invalid Registration.</h3>
+                {% endif %}
+                <p>Create an account with your registration code. If you don't have one, contact Ankit Ranjan.</p>
+                <input type="text" placeholder="Registration Code">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+                <input type="password" placeholder="Password">
+                <div class="centered"><input type="submit" value="Register"></div>
+            </form>
+
+            <div class="centered"><a href="/">Already have an account?</a></div>
+        </section>
+    </body>
+</html>
