@@ -38,6 +38,7 @@ def create_app(package_name, package_path, debug=False):
 
     app = Flask(package_name, static_folder='static', static_url_path='')
     app.debug = debug
+    app.secret_key = 's3cr3t'
 
     app.config.from_pyfile('settings.cfg', silent=True)
 
