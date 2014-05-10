@@ -1,6 +1,38 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from pymongo import MongoClient
+import datetime
 
-client = MongoClient('localhost', 27017)
+from mongokit import Connection
+from mongokit import Document
+
+
+# Create the MongoDB 
+connection = Connection()
+
+# Link the Auth DB.
+auth = connection.auth
+users = auth.users
+
+
+@connection.register
+class User(Document):
+    """The user model for the DB."""
+
+    __collection__ = 'users'
+    __database__ = 'auth'
+
+    structure = {
+        'email': basestring,
+        'password': basestring,
+        'name': basestring,
+        'registration': datetime.datetime,
+        'tokens': [basestring]
+    }
+
+    required_fields = ['email', 'name', 'password']
+
+    default_values = {
+        'registration': datetime.datetime.utcnow,
+        'tokens': []
+    }
