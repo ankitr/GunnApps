@@ -7,7 +7,6 @@ from bson.objectid import ObjectId
 
 from flask import Blueprint
 from flask import current_app
-from flask import jsonify
 from flask import redirect
 from flask import render_template
 from flask import request
