@@ -47,6 +47,8 @@ def unauthorized():
 @blueprint.route('/', methods=['GET'])
 def land():
     """Returns the landing page."""
+    if current_user:
+        return redirect('/home', code=303)
     return render_template('main.html')
 
 @blueprint.route('/', methods=['POST'])
@@ -91,8 +93,6 @@ def register():
     login_user(user)
     return redirect('/home', code=303)
 
-
-
 @blueprint.route('/home')
 @login_required
 def home():
@@ -104,3 +104,7 @@ def logout():
     """Logs out the user."""
     logout_user()
     return redirect('/')
+
+@blueprint.route('/about')
+def about():
+    return render_template('about.html')

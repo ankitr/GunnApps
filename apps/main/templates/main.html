@@ -20,7 +20,11 @@
                 {% endif %}
 
                 <input type="email" name="email" spellcheck="false" value="{{email}}" placeholder="Email Address">
+                {% if invalid %}
+                <input type="password" name="password" autofocus="autofocus" placeholder="Password">
+                {% else %}
                 <input type="password" name="password" placeholder="Password">
+                {% endif %}
                 <div class="centered"><input type="submit" value="Log In"></div>
 
             </form>
