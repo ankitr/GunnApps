@@ -23,17 +23,22 @@ h3 {
 }
 
 @media (min-width: 670px) {
-    form {
+    form, .details {
         width: 600px;
         margin: 2.5% auto;
     }
 }
 
 @media (max-width: 669px) {
-    form {
+    form, .details {
         width: 90%;
         margin: auto;
     }
+}
+
+.details > p {
+    font-size: 30px;
+    text-align: left;
 }
 
 input:not([type=submit]):not([type=file]) {
@@ -101,4 +106,14 @@ p {
     font-weight: 300;
     text-align: center;
     font-size: 20px;
+}
+
+footer {
+    margin-top: 10%;
+    text-align: center;
+    font-size: 18px;
+}
+
+footer > a {
+    text-decoration: none;
 }

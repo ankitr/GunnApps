@@ -1,9 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>{{user.name}} — Gunn Apps</title>
-</head>
-<body>
-Hi {{user.name}}
-</body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{user.name}} — Gunn Apps</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <section class="content">
+            <h1>Welcome, {{user.name.split(' ')[0]}}.</h1>
+            <section class="details">
+                <p>This is Gunn Apps, a platform to interact with your classmates like never before. Right now, you can't do much, but a whole lot more is on its way.</p>
+            </section>
+        </section>
+        <footer>
+            <a href="about">Info</a>
+        </footer>
+    </body>
 </html>
+
