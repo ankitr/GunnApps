@@ -9,15 +9,15 @@
         <section class="content">
             <h1>Register</h1>
 
-            <form class="register">
+            <form class="register" method="post">
                 {% if invalid %}
                 <h3>Invalid Registration.</h3>
                 {% endif %}
                 <p>Create an account with your registration code. If you don't have one, contact Ankit Ranjan.</p>
-                <input type="text" placeholder="Registration Code">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email Address">
-                <input type="password" placeholder="Password">
+                <input type="text" name="code" placeholder="Registration Code">
+                <input type="text" name="name" placeholder="Full Name">
+                <input type="email" name="email" placeholder="Email Address">
+                <input type="password" name="password" placeholder="Password">
                 <div class="centered"><input type="submit" value="Register"></div>
             </form>
 
