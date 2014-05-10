@@ -40,14 +40,16 @@ def load_user(userid):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return render_template('main.html', need_auth=True)
+    return render_template('main.html', message='Please log in.')
 
 
 # Creates our views.
 @blueprint.route('/', methods=['GET'])
 def land():
     """Returns the landing page."""
-    if current_user:
+    if request.args.get('logout'):
+        return render_template('main.html', message='Successfully logged out.')
+    if current_user.is_authenticated():
         return redirect('/home', code=303)
     return render_template('main.html')
 
@@ -61,7 +63,8 @@ def login():
         log.critical('Multiple users with the same email address found!')
         log.exception(e)
     if not user or (hashlib.sha512(password).hexdigest() != user['password']):
-        return render_template('main.html', invalid=True, email=email)
+        return render_template('main.html', message='Incorrect credentials.',
+                               email=email)
     login_user(user)
     return redirect('/home', code=303)
 
@@ -78,16 +81,19 @@ def register():
     name = request.form['name'].title()
     password = request.form['password']
     if not db.codes.one({'code':code}):
-        return render_template('register.html', invalid=True)
+        return render_template('register.html', message='Invalid code.',
+                               name=name, email=email)
     if db.codes.one({'email':email}):
         # The user exists.
-        return render_template('register.html', invalid=True)
+        return render_template('register.html', message='User already exists.',
+                               name=name, email=email)
     # Remove the now-used code.
     db.codes.remove({'code':code})
     # Code is valid and user is free.
     user = db.users.User()
     user['email'] = email
     user['name'] = name
+    # Hashing the user password.
     user['password'] = hashlib.sha512(password).hexdigest()
     user.save()
     login_user(user)

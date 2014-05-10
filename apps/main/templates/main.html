@@ -11,12 +11,8 @@
 
             <form method="post" action="/" class="users">
 
-                {% if invalid %}
-                <h3>Incorrect email or password.</h3>
-                {% elif logged_out %}
-                <h3>Successfully logged out.</h3>
-                {% elif need_auth %}
-                <h3>Please log in.</h3>
+                {% if message %}
+                <h3>{{message}}</h3>
                 {% endif %}
 
                 <input type="email" name="email" spellcheck="false" value="{{email}}" placeholder="Email Address">
