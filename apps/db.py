@@ -36,3 +36,17 @@ class User(Document):
         'registration': datetime.datetime.utcnow,
         'tokens': []
     }
+
+    def is_authenticated(self):
+        # TODO: Consider changing.
+        return True
+
+    def is_active(self):
+        # TODO: Consider changing.
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return unicode(self['_id'])
