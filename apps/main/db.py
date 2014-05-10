@@ -6,4 +6,4 @@ from ..db import auth
 from ..db import users
 from ..db import User
 
-codes = auth.codes
+codes = auth.registration_codes
