@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# NOTE: This will be changed, and probably put under a _run directory.
+#       For now, do not import from this file.
+
 import logging
 
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')

@@ -18,7 +18,7 @@ from flask.ext.login import login_user
 from flask.ext.login import logout_user
 
 import db
-from ..logs import log
+#from ..logs import log
 
 from mongokit import MultipleResultsFound
 

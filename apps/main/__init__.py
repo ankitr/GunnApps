@@ -9,7 +9,7 @@ from flask import render_template
 from flask import request
 
 from .. import factory
-from ..logs import log
+#from ..logs import log
 
 import assets
 
@@ -22,9 +22,9 @@ def create_app(debug=False):
     # assets.init_app(app)
 
     # Setup front-end logging.
-    @app.before_request
-    def log_request():
-        log.debug('Front-end request from %s to location %s' % (request.remote_addr, request.path))
+    # @app.before_request
+    # def log_request():
+    #     log.debug('Front-end request from %s to location %s' % (request.remote_addr, request.path))
 
     # Register error handlers for exceptional cases.
     app.errorhandler(404)(_on_404)
@@ -34,9 +34,9 @@ def create_app(debug=False):
 
 
 def _on_404(e):
-    log.debug(e)
+    # log.debug(e)
     return render_template('error/404.html'), 400
 
 def _on_500(e):
-    log.error(e)
+    # log.error(e)
     return jsonify(Error='Server error.'), 500
