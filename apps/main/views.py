@@ -82,7 +82,7 @@ def register():
     if not db.codes.one({'code':code}):
         return render_template('register.html', message='Invalid code.',
                                name=name, email=email)
-    if db.codes.one({'email':email}):
+    if db.users.one({'email':email}):
         # The user exists.
         return render_template('register.html', message='User already exists.',
                                name=name, email=email)
