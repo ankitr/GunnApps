@@ -49,7 +49,7 @@ def land():
     if request.args.get('logout'):
         return render_template('main.html', message='Successfully logged out.')
     if current_user.is_authenticated():
-        return redirect('/home', code=303)
+        return render_template('loggedin.html', user=current_user)
     return render_template('main.html')
 
 @blueprint.route('/', methods=['POST'])
@@ -65,7 +65,7 @@ def login():
         return render_template('main.html', message='Incorrect credentials.',
                                email=email)
     login_user(user)
-    return redirect('/home', code=303)
+    return redirect('/', code=303)
 
 @blueprint.route('/register', methods=['GET'])
 def contemplate():
@@ -96,12 +96,7 @@ def register():
     user['password'] = hashlib.sha512(password).hexdigest()
     user.save()
     login_user(user)
-    return redirect('/home', code=303)
-
-@blueprint.route('/home')
-@login_required
-def home():
-    return render_template('loggedin.html', user=current_user)
+    return redirect('/', code=303)
 
 @blueprint.route('/logout')
 @login_required
