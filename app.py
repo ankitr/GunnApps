@@ -10,6 +10,7 @@ from apps import api
 
 app = Flask(__name__)
 
+# This allows for nice URL segmenting and abstraction layers.
 app.wsgi_app = DispatcherMiddleware(main.create_app(), {
     '/api': api.create_app()
 })
