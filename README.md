@@ -1,4 +1,5 @@
 Gunn Apps
 =========
 
-I go to [a really amazing school](http://gunn.pausd.org). I also like building things on the web. So I registered [this website](http://gunnapps.com) to have a single user system for everything in my school I'd like to build.
+Gunn Apps is a central repository of information and software, by students for students (of [Gunn High School](http://gunn.pausd.org). It provides a central database of basic student information that is exposed via an open API to all sorts of developers.
+If you're interested in helping out, contact [Ankit](mailto:me@ankit.io) or send by a pull requrest. Documentation of the API should be up shortly.
