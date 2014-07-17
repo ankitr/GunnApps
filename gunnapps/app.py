@@ -5,13 +5,13 @@ from werkzeug.wsgi import DispatcherMiddleware
 
 from flask import Flask
 
-from apps import main
+from apps import frontend 
 from apps import api
 
 app = Flask(__name__)
 
 # This allows for nice URL segmenting and abstraction layers.
-app.wsgi_app = DispatcherMiddleware(main.create_app(), {
+app.wsgi_app = DispatcherMiddleware(frontend.create_app(), {
     '/api': api.create_app()
 })
 
