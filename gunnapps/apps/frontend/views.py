@@ -59,8 +59,9 @@ def login():
     try:
         user = db.users.User.one({'email':email})
     except MultipleResultsFound as e:
-        log.critical('Multiple users with the same email address found!')
-        log.exception(e)
+        # log.critical('Multiple users with the same email address found!')
+        # log.exception(e)
+		pass
     if not user or (hashlib.sha512(password).hexdigest() != user['password']):
         return render_template('main.html', message='Incorrect credentials.',
                                email=email)
