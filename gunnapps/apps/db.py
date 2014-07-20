@@ -25,6 +25,7 @@ class User(Document):
     __database__ = 'auth'
 
     structure = {
+		'student_id': int
         'email': basestring,
         'password': basestring,
         'name': basestring,
@@ -32,7 +33,7 @@ class User(Document):
         'tokens': [basestring]
     }
 
-    required_fields = ['email', 'name', 'password']
+    required_fields = ['student_id', 'email', 'name', 'password']
 
     default_values = {
         'registration': datetime.datetime.utcnow,
@@ -51,7 +52,17 @@ class User(Document):
         return False
 
     def get_id(self):
-        return unicode(self['_id'])
+        return unicode(self['student_id'])
+
+	def get_student_email(self):
+		# TODO: Check how PAUSD handles middle initials, etc.
+		first_name = self['name'].split(' ')[0]
+		last_name = self['name'].split(' ')[-1]
+		last_initial = last_name[0]
+		student_id_tail = str(self['student_id'])[-5:]
+		email = '%s.%s.%s@palo-alto.edu' % (first_name, last_initial, student_id_tail)
+		return email
+
 
 @connection.register
 class App(Document):
