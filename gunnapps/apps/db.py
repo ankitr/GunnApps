@@ -56,8 +56,8 @@ class User(Document):
 
     def get_student_email(self):
         # TODO: Check how PAUSD handles middle initials, etc.
-        first_name = self['name'].split(' ')[0]
-        last_name = self['name'].split(' ')[-1]
+        first_name = self['name'].split(' ')[0].lower()
+        last_name = self['name'].split(' ')[-1].lower()
         last_initial = last_name[0]
         student_id_tail = str(self['student_id'])[-5:]
         email = '%s.%s.%s@palo-alto.edu' % (first_name, last_initial, student_id_tail)
