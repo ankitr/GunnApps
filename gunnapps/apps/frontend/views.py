@@ -35,7 +35,7 @@ def on_load(state):
 
 @login_manager.user_loader
 def load_user(userid):
-    return db.users.User.one({'_id': ObjectId(userid)})
+    return db.users.User.one({'student_id': int(userid)})
 
 @login_manager.unauthorized_handler
 def unauthorized():
@@ -61,7 +61,7 @@ def login():
     except MultipleResultsFound as e:
         # log.critical('Multiple users with the same email address found!')
         # log.exception(e)
-		pass
+        pass
     if not user or (hashlib.sha512(password).hexdigest() != user['password']):
         return render_template('main.html', message='Incorrect credentials.',
                                email=email)
@@ -76,21 +76,27 @@ def contemplate():
 @blueprint.route('/register', methods=['POST'])
 def register():
     """Creates a user account."""
+    # TODO: Consider removing this intermediate assignment.
     code = request.form['code']
+    student_id = request.form['studentId']
+    print student_id
     email = request.form['email']
     name = request.form['name'].title()
     password = request.form['password']
     if not db.codes.one({'code':code}):
         return render_template('register.html', message='Invalid code.',
-                               name=name, email=email)
-    if db.users.one({'email':email}):
+                               name=name, email=email) #, student_id=student_id)
+    if db.users.one({'email':email}) or db.users.one({'student_id':int(student_id)}):
         # The user exists.
         return render_template('register.html', message='User already exists.',
-                               name=name, email=email)
+                               name=name, email=email, student_id=student_id)
+    # TODO(ankitr): Use email validation to ensure the user is real.
     # Remove the now-used code.
     db.codes.remove({'code':code})
     # Code is valid and user is free.
     user = db.users.User()
+    # The student id is an int.
+    user['student_id'] = int(student_id)
     user['email'] = email
     user['name'] = name
     # Hashing the user password.
