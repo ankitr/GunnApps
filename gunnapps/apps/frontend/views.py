@@ -79,7 +79,6 @@ def register():
     # TODO: Consider removing this intermediate assignment.
     code = request.form['code']
     student_id = request.form['studentId']
-    print student_id
     email = request.form['email']
     name = request.form['name'].title()
     password = request.form['password']
