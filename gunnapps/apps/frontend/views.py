@@ -82,6 +82,7 @@ def register():
     email = request.form['email']
     name = request.form['name'].title()
     password = request.form['password']
+    pronoun = request.form['pronoun']
     if not db.codes.one({'code':code}):
         return render_template('register.html', message='Invalid code.',
                                name=name, email=email) #, student_id=student_id)
@@ -100,6 +101,7 @@ def register():
     user['name'] = name
     # Hashing the user password.
     user['password'] = hashlib.sha512(password).hexdigest()
+    user['pronoun'] = pronoun
     user.save()
     login_user(user)
     return redirect('/', code=303)
