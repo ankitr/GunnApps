@@ -29,12 +29,13 @@ class User(Document):
         'email': basestring,
         'password': basestring,
         'name': basestring,
+        'year': int,
         'pronoun': basestring,
         'registration': datetime.datetime,
         'tokens': [basestring]
     }
 
-    required_fields = ['student_id', 'email', 'name', 'password', 'pronoun']
+    required_fields = ['student_id', 'email', 'name', 'password', 'pronoun', 'year']
 
     default_values = {
         'registration': datetime.datetime.utcnow,

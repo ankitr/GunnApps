@@ -78,15 +78,16 @@ def register():
     """Creates a user account."""
     # TODO: Consider removing this intermediate assignment.
     code = request.form['code']
-    student_id = request.form['studentId']
+    student_id = int(request.form['studentId'])
     email = request.form['email']
     name = request.form['name'].title()
     password = request.form['password']
     pronoun = request.form['pronoun']
+    year = int(request.form['class'])
     if not db.codes.one({'code':code}):
         return render_template('register.html', message='Invalid code.',
                                name=name, email=email) #, student_id=student_id)
-    if db.users.one({'email':email}) or db.users.one({'student_id':int(student_id)}):
+    if db.users.one({'email':email}) or db.users.one({'student_id':student_id}):
         # The user exists.
         return render_template('register.html', message='User already exists.',
                                name=name, email=email, student_id=student_id)
@@ -96,12 +97,13 @@ def register():
     # Code is valid and user is free.
     user = db.users.User()
     # The student id is an int.
-    user['student_id'] = int(student_id)
+    user['student_id'] = student_id
     user['email'] = email
     user['name'] = name
     # Hashing the user password.
     user['password'] = hashlib.sha512(password).hexdigest()
     user['pronoun'] = pronoun
+    user['year'] = year
     user.save()
     login_user(user)
     return redirect('/', code=303)
