@@ -15,7 +15,7 @@ connection = Connection()
 # Link the Auth DB.
 auth = connection.auth
 users = auth.users
-
+apps = auth.apps
 
 @connection.register
 class User(Document):
