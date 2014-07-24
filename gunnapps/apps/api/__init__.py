@@ -13,7 +13,7 @@ from werkzeug.exceptions import Unauthorized
 from .. import factory
 #from ..logs import log
 
-from responses import error
+from utils.responses import error
 
 def create_app(debug=False, database=None):
     """Returns the Gunn Apps API application instance."""
