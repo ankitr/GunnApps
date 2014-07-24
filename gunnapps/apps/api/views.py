@@ -4,8 +4,9 @@
 from flask import Blueprint
 from flask import request 
 
-import utils.responses as responses
-import utils.sessions as sessions
+from utils import responses
+
+from ..utils import sessions
 
 import db
 
